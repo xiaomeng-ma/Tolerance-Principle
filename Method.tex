@@ -1,0 +1,70 @@
+\section{Revised Testing Methods}
+\subsection{Yang's Test on Adam's and Eve's Data}
+In Chapter 4 of \cite{yang2016price}'s book, he established a procedure for the applying the TP. In our study, we followed his procedure. 
+\begin{exe}
+\ex 
+\begin{xlist}
+\ex Obtain a rule \textit{R} along with its structural description and structural change. 
+\ex Count \textit{N}, the number of lexical items that meet the structural description of \textit{R}.
+\ex Count \textit{e}, the subset of \textit{N} that are exceptions to R.
+\ex Compare \textit{e} and the critical threshold $\theta_N = \frac{N}{lnN}$ to determine productivity.
+\end{xlist}
+\end{exe}
+
+Yang applied this procedure to explain the acquisition of past tense in English children. English speaking children usually start to produce the past-tense form by the age of 2. Most children also produce overregularization errors on past tense, such as \textit{grewed}, \textit{feeled} \citep[e.g.][]{marcus1992overregularization}. The first instance of an overregularization error can be seen as an unambiguous marker for the presence of a productive `add \textit{-d}' rule for past tense. 
+
+Adam produced his first overregularization error at the age of 2;11, when he said \textit{What dat feeled like?} \citep{brown19731}. This error implied that Adam had already constructed the past tense rule.  
+According to the TP's prediction, the number of irregular verbs that Adam knew (\textit{e}) must be smaller than $\theta = N/lnN$, where $N$ is the number of all the verbs in his vocabulary. Adam's first recording starts at 2;3. Yang thus estimated Adam's effective vocabulary (\textit{N}) as all the verbs he produced between 2;3 and 2;11. Yang did not only count all the past tense verbs, he counted all forms of verbs as $N$. According to Yang, as long as Adam produced one form of a verb, that verb has to be in Adam's lexicon. Based on this method, he found 300 verbs, which made \textit{N} = 300. Therefore, $\theta = N/lnN \approx 53$, which means Adam can learn the rule when there are fewer than 53 irregular verbs. However, Yang counted 57 irregular verbs in Adam's total 300 verb lexicon. He attributed the difference between 57 and 53 to sampling effects. 
+
+Yang used the same method to test Eve's data. Eve's first overregularization error appeared at 1;10 when she said \textit{it falled in the briefcase}\footnote{Yang made an error here. Eve made the first overregularization error at the age of 1;8, when she said \textit{I seed it}.} \citep{brown19731}. Yang found 163 verbs Eve produced between the age 1;6, when Eve had her first recording, and 1;10. When $N = 163$, $\theta = N/lnN \approx 32$, which means Eve could only tolerate 32 irregular verbs in order to produce the past tense rule. However, Yang found 49 irregulars in her production, which is again higher than what the TP predicts. He attributed the difference to undersampling of Eve's data.  
+
+\subsection{Revised Testing Methodology}
+In Yang's test, the TP failed to account for Adam's and Eve's corpus data on past tense acquisition. With the proposed new methodology, we aim to preserve Yang's insight of the TP, which is that a rule will be derived if the cost to retrieve an item from a list with a rule is smaller than from a list without a rule. We develop a different version of the TP and altered the formula to calculate the cost to retrieve an item. 
+
+First, we aim to better estimate the probability of each item ($p_i$) in a list or items ranked by frequency. Yang assumed a Zipfian distribution for all items $N$ and all the exceptions $e$. However, a Zipfian distribution is not guaranteed for a small corpus, such as all the verbs and irregular verbs a 2-year-old child knows, which affects how $p_i$ is derived. Yang's formula for $p_i$ (\ref{CCC}) is based on a convenient fact of Zipfian distribution: when a corpus follows a Zipfian distribution, the product of the frequency of a word ($f_i$) and the rank of that word ($r_i$) is a constant $C$,shown in (\ref{AAA}). This is derived from the formal expression of Zifp's law, which is shown in (\ref{powerlaw}): the frequency of the $r$th most frequent word is inversely proportional to its rank, where the exponent ($\alpha$) equals 1. Formula (\ref{AAA}) is only valid when $\alpha$ is 1, when $N$ has a Zifpian distribution. When a smaller corpus (such as children's effective vocabulary of verbs and irregular verbs) has a power law distribution but doesn't necessarily a Zifpian distribution, where the exponent ($\alpha$) is not 1, formula (\ref{Zipfian}) is no longer valid, thus $p_i$ needs to be recalculated. 
+\begin{exe}
+\ex 
+\begin{xlist}
+\ex \label{AAA}
+$\begin{aligned}
+r_i \cdot f_i = C
+\end{aligned}$ (replicate of (\ref{Zipfian}))
+\ex \label{CCC}
+$\begin{aligned}
+p_i &  = \frac{f_i}{\displaystyle\sum_{k=1}^N f_k} =\frac{\frac{C_i}{r_i}}{\displaystyle\sum_{k=1}^N \frac{C_k}{r_k}}=\frac{\frac{1}{r_i}}{\displaystyle\sum_{k=1}^N \frac{1}{r_k}}=\frac{1}{r_i\cdot H_N}&
+\end{aligned}$ (replicate of (\ref{p})
+\end{xlist}
+\ex \label{powerlaw}
+$\begin{aligned}
+f_i = Cr_i^{-\alpha}, \alpha = 1
+\end{aligned}$
+\end{exe}
+In this paper, we propose to measure the actual corpus distributions of all the verbs ($N$) and the irregular verbs ($e$), and use the empirically estimated exponents that best fit those ranked frequency distributions in our calculations. Since all the verbs and all the irregular verbs do not necessarily share the same distribution, we will use $\alpha$ and $\beta$ to represent the exponents for these two distributions respectively. To include the exponent as a variable, the probability formula can be written as follow, where $H_{n,m} = \displaystyle\sum_{k=1}^n \frac{1}{k^m}$:
+\begin{exe} 
+\ex \label{newp}Probability of occurrence for $i$th ranked word ($p_i$):\\
+$\begin{aligned}
+p_i = & \frac{\frac{1}{r_i^\alpha}}{\displaystyle\sum_{k=1}^N (\frac{1}{r_k^\alpha})} = \frac{1}{r_i^\alpha\cdot H_{N,\alpha}}
+\end{aligned}$ 
+\end{exe}
+Based on the new formula for $p_i$, the cost to retrieve an item from a list without rules ($T_N$) and the cost to retrieve an item from a list with rules ($T_e$) can be written as follow:
+\begin{exe}
+\ex \label{newTN}Cost for a list of $N$ items without a productive rule ($T_N$):\\
+$\begin{aligned}
+T_N = &{\displaystyle\sum_{k_1}^N(r_i\cdot p_i)}\\
+= & {\displaystyle\sum_{k=1}^N(r_i\cdot\frac{1}{r_i^\alpha\cdot H_{N,\alpha}})} \\
+= & \frac{H_{N,\alpha-1}}{H_{N,\alpha}}
+\end{aligned}$
+\ex \label{newTR}Cost for a list with $e$ exceptions and a productive rule ($T_R$):\\
+$\begin{aligned}
+T_R = &{\displaystyle\sum_{k_1}^e (r_i\cdot p_i)} \cdot \frac{e}{N} + (1-\frac{e}{N}) \cdot e\\
+= & \frac{H_{e,\beta-1}}{H_{e,\beta}}\cdot\frac{e}{N} + (1-\frac{e}{N})\cdot e
+\end{aligned}$
+\ex \label{newTP}A productive rule will be derived when $T_R \leq T_N$:\\
+$\begin{aligned}
+& \frac{H_{e,\beta-1}}{H_{e,\beta}}\cdot\frac{e}{N} + (1-\frac{e}{N})\cdot e & \leq  \frac{H_{N,\alpha-1}}{H_{N,\alpha}}
+\end{aligned}$
+\end{exe}
+
+Unlike formula (\ref{TRR}) where $H_N$ can be conveniently approximated using $lnN$, there is no mathematical approximation for the Harmonic number in the inequation (\ref{newTP}). Therefore, the new version of the TP is not going to produce a maximum number of the irregular items; instead, we propose to compare $T_R$ and $T_N$ directly. The Tolerance Principle will be confirmed if $T_R$ is smaller than $T_N$ as predicted in (\ref{newTP}). 
+
+In the next section, we extracted all the variables ($e$, $N$, $\alpha$ and $\beta$) from eight children's corpora to compare $T_N$ and $T_R$. Instead of counting all the verb types the child produced as the $N$, we also estimate the $N$ by using the verb types from parents input. Since $N$ represents the child's effective vocabulary, children's production and parents' input represent the lower and upper boundary of the vocabulary respectively. The type of irregular verbs $e$ is counted as long as one form of the irregular verb (not necessarily the past tense form) appear in children's production or parents' input. The distribution of $N$ and $e$ are then mapped to the best fitted power law function to calculate the exponent $\alpha$ and $\beta$. 

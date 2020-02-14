@@ -1,0 +1,60 @@
+\subsection{Problems with the derivation}
+If we assume that Elsewhere Condition Model has its cognitive base, there are still two major problems in the derivation itself. The first problem is in equation (\ref{TN}). Yang simplified the time unit to process each item in the list as the rank of the item, which is an oversimplication that could unwanted consequences for the accuracy of the formula. One way to get around of calculating the time is to estimating the storage space. Rule learning should be more efficient than rote memory in terms of time cost and memory cost. When storing the word list with a rule takes less memory space, a rule will be formed.  
+
+For a list with \textit{N}, the frequency for 1st ranked word is \textit{f_i}, and the frequency for the Nth ranked word is 1. With Zipfian distribution, we can derive:
+
+\begin{exe}
+\ex
+$\begin{aligned}
+1\cdot f_1 &= N\cdot 1 = C&
+\end{aligned}$
+\end{exe}
+The frequency for the 1st ranked word would be the 
+\begin{exe}
+\ex
+\begin{multicols}{2}
+\begin{xlist}
+\ex No productive rules:\\
+w_1: $\underbrace{w_1, w_1...., w_1, w_1}_{N}$\\
+w_2: $\underbrace{w_2, w_2...., w_2, w_2}_{N/2}$\\
+w_3: $\underbrace{w_3, w_3...., w_3, w_3}_{N/3}$\\\\
+...\\
+w_n: $\underbrace{w_n}_{1}$\\\\
+\ex Productive rules:\\
+e_1: $\underbrace{e_1, e_1...., e_1, e_1}_{e}$\\
+e_2: $\underbrace{e_2, e_2...., e_2, e_2}_{e/2}$\\
+e_3: $\underbrace{e_3, e_3...., e_3, e_3}_{e/3}$\\
+...\\
+e_e:: $\underbrace{e_e}_{1}$\\
+{N-e}: Apply rule R
+\end{xlist}
+\end{multicols}
+\end{exe}
+When there is no rule, all the words in the list are going to be stored in memory, which means all the items will take 1 memory unit. The total memory space (M_N) for all the words would be the total frequency of all the words:
+
+\begin{exe}
+\ex 
+$\begin{aligned}
+M_N & = N + \frac{1}{2}\cdot N + \frac{1}{3}\cdot N + \frac{1}{4}\cdot N +...+\frac{1}{N-1}\cdot N + \frac{1}{N}\cdot N  &\\
+&= N \cdot H_N &
+\end{aligned}$
+\end{exe}
+
+When there is a rule, all the rule binding words are only going to take 1 memory space, since the rule is going to be applied to them. All the exceptions (\textit{e}) are going to take 1 memory unit. In other words, when there is a rule, all the exceptions are going to be registered as tokens in the memory space whereas the regular verbs are going to be types. Thereofore, the total memory space (M_e) for all words with a rule is:
+
+\begin{exe}
+\ex
+$\begin{aligned}
+M_e & = e \cdot H_e + (N-e) &
+\end{aligned}$
+\end{exe}
+
+When M_e is smaller than M_N, a rule will be generated:
+
+\begin{exe}
+\ex 
+$\begin{aligned}
+M_e &\leq M_N &\\
+e \cdot H_e + N - e &\leq N \cdot H_N
+\end{aligned}$
+\end{exe}

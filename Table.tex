@@ -1,0 +1,146 @@
+\begin{table}[htb]
+\centering
+\caption{Summary of corpus data}
+\label{table:1}
+\begin{tabular}{lllllll}
+\toprule
+ & \begin{tabular}[c]{@{}l@{}}Age of first recording to \\ first overregularizaiton error\end{tabular} & files & words & input words & verbs & input verbs \\
+\toprule
+Adam & 2;3 - 2;11 (\textit{feeled})& 18 & 39403 & 30366  & 6747 & 275 \\
+Eve & 1;6 - 1;8 (\textit{seed})& 5 & 5304 & 11253  & 564 & 136\\
+Sarah & 2;3 - 2;10 (\textit{topped})& 33 & 18778 & 27682 & 1759 & 293\\
+Peter & 1;3 - 2;6 (\textit{broked})& 14 & 52769 & 95180 & 7532 & 633\\
+Naomi & 1;3 - 1;11 (\textit{doed}) & 20 & 8009 & 9634 & 1240 & 222\\
+Allison & 1;5 - 2;11 (\textit{throwed}) & 6 & 4605 & 9366 & 612 & 140\\
+April & 1;10 - 2;1 (\textit{boughted}) & 2 & 1376 & 4435 & 128 & 100\\
+Fraser & 2;0 - 2;5 (\textit{seed})& 90 & 137407 & 222200  & 13924 & 566 \\
+\bottomrule
+\bottomrule
+Fraser_3 & & 3 & 1616 & 3304 & 1362 & 577 \\
+Fraser_4 & & 4 & 1148 & 1495 & 1160 & 640\\
+Fraser_5 & & 5 & 1485 & 1866 & 1339 & 757\\
+Fraser_6 & & 6 & 1373 & 3206 & 1968 & 945\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htb]
+\centering
+%\label{table:UEAB}
+\caption{Number of observed total number of verb types, irregular verbs and exponents}
+\begin{tabular}{lllllllll}
+\toprule
+ & $U_p$ & $\alpha_p$ & $U_c$ & $\alpha_c$ & $e_p$ & $\beta_p$ & $e_c$ & $\beta_c$ \\
+\hline
+Adam & 275 & 0.69 & 270 & 0.66 & 70 & 0.64 & 62 & 0.61 \\
+Eve & 136 & 0.74 & 91 & 0.84 & 50 & 0.65 & 36 & 0.73 \\
+Sarah & 293 & 0.71 & 189 & 0.77 & 68 & 0.58 & 48 & 0.62 \\
+Peter & 633 & 0.64 & 424 & 0.69 & 83 & 0.51 & 67 & 0.54 \\
+Naomi & 222 & 0.77 & 128 & 0.76 & 62 & 0.63 & 43 & 0.66 \\
+Allison & 140 & 0.77 & 88 & 0.87 & 44 & 0.68 & 36 & 0.84 \\
+April & 100 & 0.84 & 50 & 1.23 & 37 & 0.80 & 19 & 1.23 \\
+Fraser & 566 & 0.56 & 358 & 0.60 & 97 & 0.44 & 78 & 0.49 \\
+\bottomrule
+\bottomrule
+Fraser_3 & 155 & 0.80 & 84 & 0.85 & 54 & 0.64 & 38 & 0.70\\
+Fraser_4 & 131 & 0.78 & 91 & 0.84 & 43 & 0.61 & 36 & 0.67\\
+Fraser_5 & 145 & 0.79  & 95  & 0.8  & 53  & 0.63  & 33  &0.61\\
+Fraser_6 & 179 & 0.76 & 135 & 0.85 & 57 & 0.6 & 39 & 0.71\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Insert all the numbers in table \ref{table:UEAB} to formulas below where ($U = N$):
+\begin{exe}
+\ex \label{newTN}Time complexity for a list of $N$ items without a productive rule ($T_N$):\\
+$\begin{aligned}
+T_N = & {\displaystyle\sum_{k=1}^N(r_i\cdot\frac{1}{r_i^\alpha\cdot H_{N,\alpha}})} = \frac{H_{N,\alpha-1}}{H_{N,\alpha}}
+\end{aligned}$
+\ex \label{newTR}Time complexity for a list with $e$ exceptions and a productive rule ($T_R$):\\
+$\begin{aligned}
+T_R = & \frac{H_{e,\beta-1}}{H_{e,\beta}}\cdot\frac{e}{N} + (1-\frac{e}{N})\cdot e
+\end{aligned}$
+\ex \label{newTP}A productive rule will be derived when $T_R \leq T_N$:\\
+$\begin{aligned}
+& \frac{H_{e,\beta-1}}{H_{e,\beta}}\cdot\frac{e}{N} + (1-\frac{e}{N})\cdot e & \leq  \frac{H_{N,\alpha-1}}{H_{N,\alpha}}
+\end{aligned}$
+\end{exe}
+\begin{table}[htb]
+\centering
+\label{table:TRTNTR<TN}
+\caption{Comparison between observed time complexity}
+\begin{tabular}{llll|lll}
+\toprule
+ & \multicolumn{3}{l}{observed children's production} & \multicolumn{3}{l}{observed parents' input} \\
+ \hline
+ & $T_R$ & $T_N$ & $T_R \leq T_N$ & $T_R$ & $T_N$ & $T_R \leq T_N$ \\
+Adam & 52.53 & 78.07 & True & 57.92 & 76.24 & True \\
+Eve & 26.27 & 22.55 & \textbf{False} & 37.66 & 36.94 & \textbf{False} \\
+Sarah & 39.94 & 47.90 & True & 57.62 & 78.67 & True \\
+Peter & 60.18 & 115.04 & True & 76.05 & 181.99 & True \\
+Naomi & 32.94 & 34.03 & True & 50.37 & 55.54 & True \\
+Allison & 25.46 & 21.03 & \textbf{False} & 34.65 & 36.42 & True \\
+April & 13.44 & 8.13 & \textbf{False} & 27.34 & 24.48 & \textbf{False} \\
+Fraser & 67.27 & 110.64 & True & 86.71 & 181.58 & True\\
+\bottomrule
+\bottomrule
+Fraser_3 & 26.36 & 20.75 & \textbf{False} & 41.38 & 38.27 & \textbf{False}\\
+Fraser_4 & 26.52 & 22.55 & \textbf{False} & 33.77 & 33.82 & True\\
+Fraser_5 & 25.61 & 24.69 & \textbf{False} & 40.08 & 36.56 & \textbf{False}\\
+Fraser_6 & 31.33 & 31.41 & True & 45.03 & 46.24 & True\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htb]
+\centering
+
+\caption{Mismatch between observed U and TP predicted N}
+\label{table:MISMATCH}
+\begin{tabular}{ccc}
+\toprule
+ & Observed $U$ & Expected $N$ \\
+ \hline
+Eve's production & 91 & ~120 \\
+Eve's input & 136 & ~141 \\
+Allison's production & 88 & ~117\\
+April's production & 50 & ~152\\
+April's input & 100 & ~111 \\
+\bottomrule
+\bottomrule
+Fraser_3's production & 84 & ~94 \\
+Fraser_3's input & 155 & ~176\\
+Fraser_4's production & 91 & ~121 \\
+Fraser_5's production & 95 & ~101\\
+Fraser_5's input & 145 & ~169\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table \ref{table:MISMATCH} showed that to produce a rule, expected N number of verb types need to be either produced by the child or learned from the parent. However, only observed U number of verb types have been found in corpus.  
+
+\begin{exe}
+\ex \label{eveagain}Minimum $N$ to confirm TP when $T_R$ = $T_N$:\\
+$\begin{aligned}
+& f(N) = T_R - T_N =
+\frac{H_{e,\beta-1}}{H_{e,\beta}}\cdot\frac{e}{N} + (1-\frac{e}{N})\cdot e - \frac{H_{N,\alpha-1}}{H_{N,\alpha}} = 0
+\end{aligned}$
+
+\end{exe}
+\begin{table}[!h]
+\centering
+\label{table:eoi}
+\caption{Comparing the minimum \textit{N} and the observed \textit{U}}
+
+\begin{tabular}{ccc|cc}
+\toprule
+ & Observed $U$ & Expected $N$ & Observed $e$ & Expected $e$\\
+ \hline
+Eve's production & 91 & ~120 & 36& ~28\\
+Eve's input & 136 & ~141 & 50 & ~48 \\
+Allison's production & 88 & ~117 & 36 & ~26 \\
+April's production & 50 & ~152 & 19 & ~9\\
+April's input & 100 & 111 & 37 &~31\\
+\bottomrule
+\end{tabular}
+\end{table}

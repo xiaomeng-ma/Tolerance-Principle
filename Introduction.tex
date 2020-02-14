@@ -1,0 +1,157 @@
+\section{Introduction}
+\vspace{-1em}
+
+\subsection{Deriving the Tolerance Principle}
+\indent 
+
+Rule-based learning, such as past-tense acquisition, is very commonly observed in language acquisition, as when children form the regular past tense for a novel verb in an experimental setting (\textit{wug} -> \textit{wugged}) (citation ?) or when they spontaneously produce an overregularization of an irregular verb (\textit{go} -> \textit{goed}) (citation). Such evidence indicates that the rule is productive since it outputs forms that the child has never encountered before. But what leads to use of rules in the first place? \citep{yang2016price} proposed the Tolerance Principle (TP) to predict when a productive rule will be deployed. He hypothesized that this happens when the cost of processing words is greater without using the rule than it is when using it. To estimate the cost, Yang based his calculations on three assumptions: 1) lexical retrieval, such as looking up the past tense of a verb in memory, is a self-terminating serial search process in which the order of search is based on word frequency; 2) a productive rule applies only after a search through exceptions to the rule; and 3) the distribution of children's effective vocabulary is Zipfian, that is, the product of a word's frequency times its frequency rank is a constant. Here we describe these assumptions in more detail and argue that the third assumption, that children's word frequency distributions are Zipfian, must be revised to account for child corpus data. We also demonstrate that corpus-based testing of the TP is sensitive to the density of the data in the corpus.
+
+%Thus, he uses the TP to quantify a threshold number of exceptions ($\theta$) that a learner can tolerate: $\theta = N/ln(N)$.
+
+Do children learn a rule for forming the past tense? Or do they simply have a list of verbs and local regularities? If they do have a rule, how is it formed, given that the input is noisy? \citep{yang2016price} has proposed the Tolerance Principle (TP) to explain how children deploy general (productive) rules given noisy input. We first describe the principle then our revision of it. Yang assumes that the humans apply the Elsewhere Condition  \cite[e.g.][]{mcclelland1981interactive, plaut1997structure} in processing rules and exceptions. The Elsewhere Condition can be implemented as a serial search procedure in which each lexical item is compared to all the exceptions to the general rule. If a match is found, a specific rule for the matching exception is triggered. If not, the general rule is applied as shown in (\ref{ewc}):
+\begin{exe}
+\ex \label{ewc}
+\textsc{if} w = e_1 \textsc{then} apply rule e_1 to w... \\
+\textsc{if} w = e_2 \textsc{then} apply rule e_2 to w...\\
+\textsc{if} w = e_3 \textsc{then} apply rule e_3 to w...\\
+...\\
+\textsc{if} w = e_N \textsc{then} apply rule e_N to w...\\
+\textsc{if} w not in set\{e_1,e_2,e_3,e_4....e_N\}, \textsc{then} apply general rule to w...
+\end{exe}
+For example, to retrieve the past tense form for the verb \textit{eat}, \textit{eat} is first compared to the exceptions in the irregular verb inventory. When it is found, the irregular rule for \textit{eat} is applied to derive the past tense form \textit{ate}. To retrieve the past tense form for the verb \textit{type}, when the search for a match in the irregular verb set fails, the general past tense rule is applied to derive \textit{typed}.
+
+%MC: Assuming that lexical retrieval ...  ?
+Since lexical retrieval is a self-terminating serial search process, rules and exceptions are organized to minimize the time required. A productive rule to produce a set of N items is derived when applying the rule takes less time than does processing all the items individually. Without a productive rule, all the items are ranked by their frequencies, so that frequently used items will be processed most quickly. When a productive rule is generated, items are separated into two categories, regulars and exceptions. The exceptions are ranked by frequency and the rule is applied only when the item is not found in the set of exceptions. For example, when there is no productive rule and the vocabulary inventory has \textit{n} regular items (\textit{w}) and \textit{m} irregular items (\textit{e}), all the items are arranged according to their frequency, as shown in (\ref{norule}). When there is a productive rule, all the irregular items are ranked based on frequency, and all the regular items are concatenated into a set where one rule will be applied, as shown in (\ref{rule}). 
+\begin{exe}
+\begin{minipage}{0.5\linewidth}
+\ex Without productive rule:
+\begin{equation*}
+N = n+m \left\{\begin{array}{cc} 
+ w_1 & frequency: 100 \\
+ e_1 & frequency: 99\\
+ w_2 & frequency: 98\\
+ ... & frequency: ...\\
+w_m & frequency: 2\\
+e_n & frequency: 1
+\end{array}
+\right. \label{norule}
+\end{equation*}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\ex With productive rule:
+\begin{equation*}
+N = n+1 \left\{\begin{array}{cc} 
+ e_1 & frequency: 99 \\
+ e_2 & frequency: 90 \\
+ e_3 & frequency: 87 \\
+ ... & frequency: ...\\
+ e_n & frequency: 1\\
+ & {w_1,w_2,w_3...w_n} 
+\end{array}
+\right. \label{rule}
+\end{equation*}
+\end{minipage}
+\end{exe}
+The rule will be generated only when the cost (Yang refered to the cost as `time complexity') to process the list with the rule is less
+than processing all the items. As shown in (\ref{norule}) and (\ref{rule}), there are fewer items (n+1) to process in the list with a productive rule than in the list without a productive rule (n+m). On occasion, however, the time to search for an item in the list \textit{with} a rule can be more than the search time in the list \textit{without} a rule. For example, for the item \textit{w_2}, which is a more frequent regular word, it will take less time to find \textit{w_2} in the list without a productive rule than in the list with one. Since \textit{w_2} is the third most frequent word, the search only needs to examine \textit{w_1} and \textit{e_1} before finding a match for \textit{w_2}. In the list with a productive rule, the regular item will be reached only after all the exceptions are checked, which creates more cost to find \textit{w_2}. Therefore, the rule will be deployed only when the average cost to search for each word in the list with a productive rule ($T_R$) is less than the list without a rule ($T_N$). 
+\begin{exe}
+\ex $T_{N} > T_{R}$
+\end{exe}
+
+According to Yang, the average cost to search for a word is the product of the probability of the word and the retrieval time for the word. To calculate the probability for each word, Yang assumes that any sample from a large corpus follows the Zipfian distribution; therefore, the product of the frequency of the word ($f_i$) and the rank ($r_i$) of the word is a constant ($C$).
+
+\begin{exe}
+\ex \label{Zipfian}
+$r_if_i  = C_i$
+\end{exe}
+The probability of a word in a corpus ($p_i$) is the frequency of the word ($f_i$) divided by the sum of the frequencies of all the words. The probability of occurrence ($p_i$) for $w_i$ can be expressed as (\ref{p}) where $H_N = \displaystyle\sum_{k=1}^N \frac{1}{r_k}$.
+
+\begin{exe}
+\ex \label{p}
+$\begin{aligned}
+p_i &  = \frac{f_i}{\displaystyle\sum_{k=1}^N f_k} =\frac{\frac{C_i}{r_i}}{\displaystyle\sum_{k=1}^N \frac{C_k}{r_k}}=\frac{\frac{1}{r_i}}{\displaystyle\sum_{k=1}^N \frac{1}{r_k}}=\frac{1}{r_i\cdot H_N}&
+\end{aligned}$
+\end{exe}
+
+
+Since all the items are stored in a list ranked according to frequency, the retrieval time for each item is determined by the rank of the item. For example, the word \textit{the} appears more frequently in the corpus than the word \textit{give}, and therefore it costs less to retrieve. Yang simplified this as `the \textit{i}-th ranked item takes \textit{i} units of time to be retrieved' \citep{yang2018user}. The cost for \textit{w_i} (T_{w_i}) is shown in (\ref{TW}). The total cost for \textit{N} items in the list ($T_N$) is shown in (\ref{TN}).
+\begin{exe}
+\ex \label{TW}
+$\begin{aligned}
+T_{w_i} & = r_i\cdot\frac{1}{r_i\cdot H_N} = \frac{1}{H_N}&
+\end{aligned}$
+\ex \label{TN}
+$\begin{aligned}
+T_N & = \displaystyle\sum_{k=i}^N (r_i\cdot\frac{1}{r_i\cdot H_N}) = \frac{N}{H_N}&
+\end{aligned}$
+\end{exe}
+
+If a rule is used, all the exceptions are stored in a ranked list and all the regular items are stored in a set after the list of exceptions. The exception list is processed in the same way as is the list without rules. If there are \textit{e} items in the exceptions, the cost for \textit{e_i} (T_{e_i}) in the exception list is shown in (\ref{Tee}). The total cost for all the items in the exception list (T_e) is shown in (\ref{Tell}). 
+
+%MC: these two formulas are incorrect and the explanation given in the preceding paragraph does not properly match
+\begin{exe}
+\ex \label{Tee}
+$\begin{aligned}
+T_{e_i} = r_i\cdot\frac{1}{r_i\cdot H_e}\cdot\frac{e}{N} = \frac{1}{N\cdot H_e}&
+\end{aligned}$
+\ex \label{Tell}
+$\begin{aligned}
+T_{e} = \displaystyle\sum_{k=1}^e(r_i\cdot\frac{1}{r_i\cdot H_e}\cdot\frac{e}{N}) = \frac{e}{H_e}\cdot\frac{e}{N}&
+\end{aligned}$
+\end{exe}
+
+The cost for all regulars is the same, which is the constant $e$, given that there are $e$ items in the exception list. The total cost to process all the regular items (T_{\overline{w}}) is:
+\begin{exe}
+\ex \label{Tww}
+$\begin{aligned}
+T_{\overline{w}} =    (1 - \frac{e}{N})\cdot e
+\end{aligned}$
+\end{exe}
+The total cost for a list with a productive rule ($T_R$) is the sum of the cost for exceptions and regular items, as shown in (\ref{Te}):
+\begin{exe}
+\ex \label{Te}
+$\begin{aligned}
+T_R = T_e + T_{\overline{w}} = & \frac{e}{N}\cdot \frac{e}{H_e} + (1-\frac{e}{N})\cdot e&
+\end{aligned}$
+\end{exe}
+A productive rule will be derived only when $T_R$ is smaller than $T_N$. To derive the maximum number for the exceptions (\textit{e}), first we approximate the \textit{N}th harmonic number with the natural log (ln\textit{N}), then we make $T_R \leq T_N$:
+
+\begin{exe}
+\ex \label{TRR}
+$\begin{aligned}
+T_R &\leq T_N &\\
+\frac{e}{N}\cdot \frac{e}{H_e} + (1-\frac{e}{N})\cdot e &\leq \frac{N}{H_N} &\\
+\frac{e}{N}\cdot \frac{e}{lne} + (1-\frac{e}{N})\cdot e &\leq \frac{N}{lnN}\\
+\frac{e^2}{N}\cdot (\frac{1}{lne} -1) + e & \leq \frac{N}{lnN}\\
+\end{aligned}$
+\end{exe}
+Since $\frac{e^2}{N}\cdot(\frac{1}{lne} -1)$ is always smaller than or equal to zero, as long as $e$ is smaller than $\frac{N}{lnN}$,  then $T_R$ is always smaller than $T_N$. Thus, the TP is derived:
+\begin{exe}
+\ex \textit{Tolerance Principle} \label{TPTPT}\\
+Let R be a rule applicable to \textit{N} items, of which \textit{e} are exceptions. \textit{R} is productive if and only iff:\\
+$\begin{aligned}
+&e \leq \theta_{N}, where \theta_{N} = \frac{N}{lnN}
+\end{aligned}$ 
+\citep[p.64]{yang2016price}
+\end{exe}
+
+\subsection{Why should(n't) the Tolerance Principle (TP) work?}
+Recall that the TP assumes the Elsewhere Condition, and is derived based on the assumption that lexical retrieval is a serial search of a frequency-ranked list that results in the logarithmic relationship between frequency and retrieval time \citep{murray2004serial}. 
+%MC: It's the serial search of a frequency-ranked list that results in the logarithmic relationship between frequency and retrieval time
+%MC: In the following sentence, are you saying that it might not correspond to an actual psychological process? 
+There is no guarantee that it corresponds to the actual psychological process learning. The TP appeaingly handles a critical fact about language acquisition: children generate rules based on noisy input. The TP provides an elegant and succinct way to quantify the `noise' in the input. 
+
+Evidence from artificial language learning \citep{schuler2016testing} supports the TP. Children between the ages of 5 and 7 heard names of nine novel objects in both singular and plural forms. Each plural marker either followed a rule (add \textit{ka}) or instead used an individual suffix (add \textit{po, tay,  lee bae, muy,} or \textit{woo}). In one condition, children heard five nouns with the \textit{ka} marker and four with individual markers. In another condition, they heard three nouns with the \textit{ka} marker and six with individual markers. As the TP predicts, children learned the rule under the 5/4 condition but not the 3/6 condition, as shown by their ability to use \textit{ka} as a general plural marker in a Wug-like test. 
+
+Despite this evidence, other research has queried whether the TP can be applied to explain language acquisition in real life. 
+
+Yang used $lnN$ as the approximation of the Harmonic number, as shown in (\ref{TRR}). For smaller $N$, however, {$\log_2 N$} is a better approximation of $H_N$ \citep{andreae2018charles}. For example, in \cite{schuler2016testing}'s experiment, when N = 9, $H_9 \approx 2.83$, while $\ln 9 \approx 2.20$ and $\log_2 9 \approx 2.71$. For N = 9, the base-2 logarithm is a better approximation than the natural logarithm. That the values matter can be seen by looking at the 4 exceptions, which were calculated based on $\theta =  N/lnN$, where 9/2.20 $\approx 4.10$. If, instead, the original $H_9 \approx 2.83$ were inserted, then $\theta =  N/H_N$ would be 9/2.83 $\approx 3.18$. That result produces a tolerance threshold of three exceptions, which goes against the results in \cite{schuler2016testing}.  
+
+The TP also received criticism on the more general level of how to approach acquisition. For example, perhaps communicative needs, context, prior learning and cognitive load should be taken into account \citep{goldberg2018sufficiency}. As another example, serial search might be a flawed model compared to a more relevant lexical retrieval model \citep{kapatsinski2018intolerance}\footnote{See \cite{yang2018some} for his response to Goldberg and Kapatsinski.}.
+%MC: for Yang's defense of serial search??
+
+In addition, Yang examined Adam's and Eve's corpus data on past tense verbs to test the TP. However, the results didn't conform to TP predictions. There are more irregular verbs in Adam's and Eve's data than the maximum number of exceptions ($\theta$) the TP predicts. Yang attributed the discrepancy to sampling effects. 
+
+
+In this paper, we developed a method to test the TP on corpus data and explored how would sampling effects influence the applicability of the TP on the corpus data. The rest of the paper is organized as follow: in section 2, we revisited Yang's test on Adam and Eve and proposed a revised methods that would be more appropriate for corpus data testing; in section 3, we tested the revised method on eight children's corpus data, including Adam and Eve; in section 4, we used Fraser's corpus (a densely sampled corpus from Manchester corpus) to explore the sampling effects on the TP. 
+

@@ -1,0 +1,144 @@
+\section{Testing the TP on corpus data}
+
+\textbf{Use Yang's original TP to test}
+\subsection{Testing on Adam's, Eve's and six other children's corpus data}
+In this section, we use the revised testing methods to test eight children's corpus data on their past tense acquisition. The age of the first recording and the age of the first overregularization error for each child is shown in \textsc{table} \ref{table:1}, with a summary of the each child's corpus data.
+
+\begin{table}[htb]
+\small
+\centering
+\caption{Summary of corpus data for each child}
+\label{table:1}
+\begin{tabular}{llllllll}
+\toprule
+ & \begin{tabular}[c]{@{}l@{}}Age of first recording to \\ overregularizaiton error\end{tabular} & corpus & files & words & \begin{tabular}[c]{@{}l@{}}input\\words \end{tabular} & verbs & \begin{tabular}[c]{@{}l@{}}input\\words \end{tabular} \\
+\toprule
+Adam(\textit{feeled}) & 2;3 - 2;11 & \cite{brown19731}&18 & 39403 & 30366  & 6747 & 4670 \\
+Eve & 1;6 - 1;8 (\textit{seed})& \cite{brown19731} &5 &  5304 & 11253  & 564 & 1618\\
+Sarah & 2;3 - 2;10 (\textit{heared}) &\cite{brown19731}&33  & 18778 & 27682 & 1759 & 3867\\
+Peter & 1;3 - 2;6 (\textit{broked})& \cite{bloom1974imitation}& 14 &52769 & 95180 & 7532 & 15537\\
+Naomi & 1;3 - 1;11 (\textit{doed}) & \cite{sachs1983talking} &20  &8009 & 9634 & 1240 & 1463\\
+Allison & 1;5 - 2;11 (\textit{throwed}) & \cite{bloom1973one} &6 &  4605 & 9366 & 612 & 1453\\
+April & 1;10 - 2;1 (\textit{boughted}) & \cite{higginson1985fixing}& 2 & 1376 & 4435 & 128 & 658\\
+Fraser & 2;0 - 2;5 (\textit{seed})& \cite{lieven2009two} &90 &  137407 & 222200  & 13924 & 32359 \\
+\bottomrule
+\end{tabular}
+\end{table}
+All of the data were automatically extracted from the annotated corpora in CHILDES using the \textsc{nltk} python package. The verbs in each file were identified using part-of-speech taggers annotated by the MOR program \citep{macwhinney2012morphosyntactic}. The number of verb types and irregular verb types in parents' input ($U_p$ and $e_p$) and in children's production ($U_c$ and $e_c$) are shown in \textsc{table} \ref{table:UEAB}, with the exponents for the verb types of parents' input ($\alpha_p$), children's production ($\alpha_c$) and the exponents for the irregular verb types in parents' input ($\beta_p$) and the children's production ($\beta_c$). The log-log graphs for each child can be found in the Appendix.
+
+
+\begin{table}[htb]
+\centering
+\caption{Number of observed total number of verb types, irregular verbs and exponents}
+\label{table:UEAB}
+\begin{tabular}{lllllllll}
+\toprule
+ & $U_p$ & $\alpha_p$ & $U_c$ & $\alpha_c$ & $e_p$ & $\beta_p$ & $e_c$ & $\beta_c$ \\
+\hline
+Adam & 275 & 0.69 & 270 & 0.66 & 70 & 0.64 & 62 & 0.61 \\
+Eve & 136 & 0.74 & 91 & 0.84 & 50 & 0.65 & 36 & 0.73 \\
+Sarah & 293 & 0.71 & 189 & 0.77 & 68 & 0.58 & 48 & 0.62 \\
+Peter & 633 & 0.64 & 424 & 0.69 & 83 & 0.51 & 67 & 0.54 \\
+Naomi & 222 & 0.77 & 128 & 0.76 & 62 & 0.63 & 43 & 0.66 \\
+Allison & 140 & 0.77 & 88 & 0.87 & 44 & 0.68 & 36 & 0.84 \\
+April & 100 & 0.84 & 50 & 1.23 & 37 & 0.80 & 19 & 1.23 \\
+Fraser & 566 & 0.56 & 358 & 0.60 & 97 & 0.44 & 78 & 0.49 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+First, we used Yang's method ($\theta = N/lnN$) to calculated the theoretical threshold for learning and compared it with the observed number of irregular verbs. The results in shown in \textsc{table} \ref{yang1}. We used $U_c$ and $U_p$ to represent $N$ separately and inserted the value of the variables ($e$, $\alpha$, $\beta$) to formula (\ref{newTN}) and (\ref{newTR}) to calculate $T_N$ and $T_R$. The results for $T_R$ and $T_N$ for each child is shown in \textsc{table} \ref{table:TRTNTR<TN}. 
+
+
+
+
+
+
+
+\begin{table}[htb]
+\centering
+\caption{Comparison between observed cost and the TP predicted cost}
+\label{table:TRTNTR<TN}
+\begin{tabular}{cccc|ccc}
+\toprule
+ & \multicolumn{3}{l}{$N$ = Children's production ($U_c$)} & \multicolumn{3}{l}{$N$ = Parent's input ($U_p$)} \\
+ \hline
+ & $T_R$ & $T_N$ & $T_R \leq T_N$ & $T_R$ & $T_N$ & $T_R \leq T_N$ \\
+Adam & 52.53 & 78.07 & True & 57.92 & 76.24 & True \\
+Eve & 26.27 & 22.55 & \textbf{False} & 37.66 & 36.94 & \textbf{False} \\
+Sarah & 39.94 & 47.90 & True & 57.62 & 78.67 & True \\
+Peter & 60.18 & 115.04 & True & 76.05 & 181.99 & True \\
+Naomi & 32.94 & 34.03 & True & 50.37 & 55.54 & True \\
+Allison & 25.46 & 21.03 & \textbf{False} & 34.65 & 36.42 & True \\
+April & 13.44 & 8.13 & \textbf{False} & 27.34 & 24.48 & \textbf{False} \\
+Fraser & 67.27 & 110.64 & True & 86.71 & 181.58 & True\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+As shown in \textsc{table} \ref{table:TRTNTR<TN}, the TP successfully predicted five children's acquisition on past tense acquisition, that the past tense rule is derived because $T_R$ is smaller than $T_N$. However, three children's data (Eve, Allison and April) do not support the TP's prediction. This could be attributed to the effect of smaller sample size, since Eve, Allison and April have less data between the first recording and the first appearance of the overregularization error than other children (as shown in \textsc{table} \ref{table:1}). In order to further test how would sample size affect the testablibity of the TP, we used Fraser's corpus to explore the sampling effects on the TP.  
+
+
+\subsection{Exploring Small Sample effects on the TP}
+Fraser is the most densely sampled corpus in this study. His first recording and first overregularization error was 5 month apart and he had 90 recording files. He was recorded for five hours per week in the first month (2;0 to 2;1) and one hour per week for the rest of the four months (2;2 to 2;5). The densely sampled corpus captured 358 types of verbs and 78 types of irregular verbs that Fraser produced, and 566 types of verbs and 97 types of irregular verbs in parents' input. Eve's, April's and Allison's corpus are less densely sampled comparing to Fraser's. Eve's first recording and first overregularization error was only 2 month apart and she only had 5 recording files. She was recorded twice a month between the age of 1;6 - 1;8. April's first recording and first overregularization error was 3 months apart and she was only recorded twice (1;10 and 2;1). Allison's first recording and first overregularizaiton error was 18 months apart and she was recorded only six times. Four of her 6 files were recorded before 2;0 (1;5, 1;7, 1;8 and 1;10) and only 2 files were recorded after she turned two years old (2;4 and 2;10). The short intervals between the age of overregularization error and the first recording (such as Eve and April) could be the reason for a smaller sample since the children simply didn't produce enough verbs in such short time intervals. Or, the smaller sample could be a result of sparse sampled data (such as Alison) that the recordings failed to cover the children's longitudinal development. In this section, we used Fraser's corpus to explore these two types of small sample. 
+
+We first investigated the age related small sample size effect by setting the age of first recording as 2;4, only one month before Fraser made the first overregularization error (2;5). There are 11 recording files between 2;4 - 2;5 in Fraser's corpus, and a summary of the corpus data is shown in \textsc{table} \ref{table:FraserSum}. Then, we randomly selected 3,4,5,6 files from Fraser's corpus to represent different density of the corpus from age 2;0 - 2;5. The summary of the corpus is also shown in \textsc{table} \ref{table:FraserSum}. Subsequently, the number of verb types and irregular verb types in children's production ($U_c$ and $e_c$) and parents' input ($U_p$ and $e_p$), and the exponent for the distribution of all verbs ($\alpha_c$ and $\alpha_p$) and irregular verbs  ($\beta_c$ and $\beta_p$) are subtracted from the data, shown in \textsc{table} \ref{table:FraserB}. These variables were then inserted into formula (\ref{newTN}) and (\ref{newTR}) to calculate the $T_N$ and $T_R$. The results are shown in \textsc{table} \ref{table:Fraser<}.
+
+\begin{table}[htb]
+\centering
+\caption{Summary of Corpus used Small Sample Effects testing}
+\label{table:FraserSum}
+\begin{tabular}{llllllll}
+\hline
+& & Age & files & words & input words & verbs & input verbs \\
+\toprule
+Age Related & Fraser_{age} & 2;4 - 2;5 & 11 & 2861 & 4074& 2104&5497\\
+\hline 
+Density Related & Fraser_3 & 2;3, 2;4, 2;5 & 3 & 1616 & 3304 & 1362 & 577 \\
+& Fraser_4 & 2;0, 2;1,2;3, 2;4 & 4 & 1148 & 1495 & 1160 & 640\\
+& Fraser_5 & 2;0x3, 2;1, 2;2 & 5 & 1485 & 1866 & 1339 & 757\\
+& Fraser_6 & 2;0x3, 2;1, 2;2, 2;4& 6 & 1373 & 3206 & 1968 & 945\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htb]
+\centering
+\caption{Number of observed total number of verb types, irregular verbs and exponents in Fraser's samples}
+\label{table:FraserB}
+
+\begin{tabular}{llllllllll}
+\toprule
+& & $U_p$ & $\alpha_p$ & $U_c$ & $\alpha_c$ & $e_p$ & $\beta_p$ & $e_c$ & $\beta_c$ \\
+\hline
+Age Related & Fraser_{age} & 277 & 0.66& 168& 0.73&71& 0.53& 54&0.60\\
+\hline
+Density Related &Fraser_3 & 155 & 0.80 & 84 & 0.85 & 54 & 0.64 & 38 & 0.70\\
+&Fraser_4 & 131 & 0.78 & 91 & 0.84 & 43 & 0.61 & 36 & 0.67\\
+&Fraser_5 & 145 & 0.79  & 95  & 0.8  & 53  & 0.63  & 33  &0.61\\
+&Fraser_6 & 179 & 0.76 & 135 & 0.85 & 57 & 0.6 & 39 & 0.71\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!ht]
+\centering
+\caption{Comparison between the cost in Fraser's samples}
+\label{table:Fraser<}
+\begin{tabular}{lllll|lll}
+\toprule
+& & \multicolumn{3}{l}{$N$ = Children's production ($U_c$)} & \multicolumn{3}{l}{$N$ = Parent's input ($U_p$)} \\
+\hline
+& & $T_R$ & $T_N$ & $T_R \leq T_N$ & $T_R$ & $T_N$ & $T_R \leq T_N$ \\
+ \hline
+Age Related & Fraser_{age} & 42.58 & 45.48 &True & 59.31& 79.99 & True\\
+\hline
+Dense Related & Fraser_3 & 26.36 & 20.75 & \textbf{False} & 41.38 & 38.27 & \textbf{False}\\
+&Fraser_4 & 26.52 & 22.55 & \textbf{False} & 33.77 & 33.82 & True\\
+&Fraser_5 & 25.61 & 24.69 & \textbf{False} & 40.08 & 36.56 & \textbf{False}\\
+&Fraser_6 & 31.33 & 31.41 & True & 45.03 & 46.24 & True\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+As shown in \textsc{table} \ref{table:Fraser<}, the TP was tested to be true using only one month of Fraser's data. It implies that the short time interval between the first recording and the overregularization error does not affect the testability of the TP. However, the density of the sample has a more substantial impact on whether the TP can be tested. For Fraser's data, the TP was successfully tested on six files, but not three to five files, as shown in \textsc{table} \ref{table:Fraser<}. 
