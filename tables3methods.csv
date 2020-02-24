@@ -1,0 +1,34 @@
+|         | S<sub>N</sub> | S<sub>e</sub> | N    | e    | T<sub>N</sub> | T<sub>R</sub> | T<sub>R</sub><T<sub>N</sub> |
+| ------- | ------------- | ------------- | ---- | ---- | ------------- | ------------- | --------------------------- |
+| Adam    | 6,747         | 3,632         | 270  | 62   | 33.80         | 58.78         | False                       |
+| Eve     | 564           | 337           | 91   | 36   | 17.51         | 29.92         | False                       |
+| Sarah   | 1,759         | 1,035         | 189  | 48   | 25.65         | 43.70         | False                       |
+| Peter   | 7,532         | 3,647         | 424  | 67   | 43.82         | 64.80         | False                       |
+| Naomi   | 1,240         | 757           | 128  | 43   | 19.63         | 36.54         | False                       |
+| Allison | 612           | 335           | 88   | 36   | 18.24         | 29.71         | False                       |
+| April   | 128           | 62            | 50   | 19   | 14.64         | 18.38         | False                       |
+| Fraser  | 13,924        | 9,903         | 371  | 78   | 26.34         | 68.40         | False                       |
+| Adam's input    | 4,670         | 2,863         | 297  | 70   | 35.27         | 64.93         | False                       |
+| Eve's input     | 1,618         | 966           | 138  | 50   | 21.17         | 40.68         | False                       |
+| Sarah's input   | 3,867         | 2,525         | 293  | 68   | 33.37         | 62.41         | False                       |
+| Peter's input   | 15,573        | 8,466         | 633  | 83   | 47.19         | 82.86         | False                       |
+| Naomi's input   | 1,463         | 945           | 174  | 59   | 27.12         | 49.36         | False                       |
+| Allison's input | 1,453         | 936           | 140  | 44   | 21.32         | 38.37         | False                       |
+| April's input   | 658           | 429           | 100  | 37   | 19.09         | 32.43         | False                       |
+| Fraser's input  | 32,359        | 23,169        | 581  | 97   | 30.80         | 88.88         | False                       |
+| Adam    | 50.32 | 48.23 | False     | Adam's input    | 55.35 | 48.96 | False     |
+| Eve     | 24.92 | 20.17 | False     | Eve's input     | 35.36 | 27.68 | False     |
+| Sarah   | 38.14 | 36.06 | False     | Sarah's input   | 55.00 | 51.58 | False     |
+| Peter   | 58.16 | 70.09 | #True     | Peter's input   | 73.80 | 98.13 | #True     |
+| Naomi   | 31.53 | 26.38 | False     | Naomi's input   | 47.89 | 41.09 | False     |
+| Allison | 24.56 | 19.65 | False     | Allison's input | 32.97 | 28.33 | False     |
+| April   | 13.64 | 12.78 | False     | April's input   | 26.28 | 8.03  | False     |
+| Fraser  | 63.90 | 13.26 | False     | Fraser's input  | 83.35 | 15.24 | False     |
+| Adam    | 270  | 62   | ≈ 48 | False | Adam's input    | 275  | 70   | ≈ 56 | False |
+| Eve     | 91   | 36   | ≈ 20 | False | Eve's input     | 136  | 50   | ≈ 28 | False |
+| Sarah   | 189  | 48   | ≈ 36 | False | Sarah's input   | 293  | 68   | ≈ 52 | False |
+| Peter   | 424  | 67   | ≈ 70 | #True | Peter's input   | 633  | 83   | ≈ 98 | #True |
+| Naomi   | 128  | 43   | ≈ 26 | False | Naomi's input   | 222  | 62   | ≈ 41 | False |
+| Allison | 88   | 36   | ≈ 20 | False | Allison's input | 140  | 44   | ≈ 28 | False |
+| April   | 50   | 19   | ≈ 13 | False | April's input   | 100  | 37   | ≈ 22 | False |
+| Fraser  | 371  | 78   | ≈ 61 | False | Fraser's input  | 566  | 97   | ≈ 92 | False |

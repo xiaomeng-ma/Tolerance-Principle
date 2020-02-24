@@ -1,0 +1,476 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+setwd(dir = "/Users/Ershui13/Desktop/TP_BU")
+```
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+par(mfrow=c(2,4))
+plot(m_pl, main = "Adam's verb distribution", ylab = "CDF", )
+lines(m_pl, col = 'red')
+lines(m_ln, col = 'green')
+lines(m_pois, col = 'blue')
+lines(m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.5)
+plot(eve_m_pl, main = "Eve's verb distribution", ylab = "CDF",)
+lines(eve_m_pl, col = 'red')
+lines(eve_m_ln, col = 'green')
+lines(eve_m_pois, col = 'blue')
+lines(eve_m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.5)
+plot(fraser_m_pl, main = "Fraser's verb distribution", ylab = "CDF",)
+lines(fraser_m_pl, col = 'red')
+lines(fraser_m_ln, col = 'green')
+lines(fraser_m_pois, col = 'blue')
+lines(fraser_m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.5)
+plot(naomi_m_ln,main = "Naomi's verb distribution", ylab = "CDF",)
+lines(naomi_m_pl, col = 'red')
+lines(naomi_m_ln, col = 'green')
+lines(naomi_m_pois, col = 'blue')
+lines(naomi_m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.5)
+plot(peter_m_ln,main = "Peter's verb distribution", ylab = "CDF",)
+lines(peter_m_pl, col = 'red')
+lines(peter_m_ln, col = 'green')
+lines(peter_m_pois, col = 'blue')
+lines(peter_m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.5)
+plot(allison_m_ln,main = "Allison's verb distribution", ylab = "CDF",)
+lines(allison_m_pl, col = 'red')
+lines(allison_m_ln, col = 'green')
+lines(allison_m_pois, col = 'blue')
+lines(allison_m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.5)
+plot(april_m_ln,main = "April's verb distribution", ylab = "CDF",)
+lines(april_m_pl, col = 'red')
+lines(april_m_ln, col = 'green')
+lines(april_m_pois, col = 'blue')
+lines(april_m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.5)
+plot(sarah_m_ln, main = "Sarah's verb distribution", ylab = "CDF",)
+lines(sarah_m_pl, col = 'red')
+lines(sarah_m_ln, col = 'green')
+lines(sarah_m_pois, col = 'blue')
+lines(sarah_m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.4)
+
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+```{r}
+library('poweRlaw')
+
+plot(eve_m_pl, main = "Eve's verb distribution", ylab = "CDF",)
+lines(eve_m_pl, col = 'red')
+lines(eve_m_ln, col = 'green')
+lines(eve_m_pois, col = 'blue')
+lines(eve_m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.5)
+plot(fraser_m_pl, main = "Fraser's verb distribution", ylab = "CDF",)
+lines(fraser_m_pl, col = 'red')
+lines(fraser_m_ln, col = 'green')
+lines(fraser_m_pois, col = 'blue')
+lines(fraser_m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.5)
+plot(naomi_m_ln,main = "Naomi's verb distribution", ylab = "CDF",)
+lines(naomi_m_pl, col = 'red')
+lines(naomi_m_ln, col = 'green')
+lines(naomi_m_pois, col = 'blue')
+lines(naomi_m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.5)
+plot(peter_m_ln,main = "Peter's verb distribution", ylab = "CDF",)
+lines(peter_m_pl, col = 'red')
+lines(peter_m_ln, col = 'green')
+lines(peter_m_pois, col = 'blue')
+lines(peter_m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.5)
+plot(allison_m_ln,main = "Allison's verb distribution", ylab = "CDF",)
+lines(allison_m_pl, col = 'red')
+lines(allison_m_ln, col = 'green')
+lines(allison_m_pois, col = 'blue')
+lines(allison_m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.5)
+plot(april_m_ln,main = "April's verb distribution", ylab = "CDF",)
+lines(april_m_pl, col = 'red')
+lines(april_m_ln, col = 'green')
+lines(april_m_pois, col = 'blue')
+lines(april_m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.5)
+```
+
+```{r}
+adam <- read.csv(file = 'Adam.csv')
+adam_m_pl <- displ$new(adam$count)
+estpl_adam <- estimate_xmin(m_pl)
+adam_m_pl$setXmin(estpl_adam)
+adam_m_ln<- dislnorm$new(adam$count)
+estln_adam <-estimate_xmin(adam_m_ln)
+adam_m_ln$setXmin(estln_adam)
+adam_m_pois <-dispois$new(adam$count)
+est_pois_adam <-estimate_xmin(adam_m_pois)
+adam_m_pois$setXmin(est_pois_adam)
+adam_m_exp = disexp$new(adam$count)
+est_exp_adam <- estimate_xmin(adam_m_exp)
+adam_m_exp$setXmin(est_exp_adam)
+```
+
+```{r}
+adam_m_ln
+```
+```{r}
+adamll <- lm(log(adam$rank) ~ log(adam$count))
+adamll
+```
+
+
+
+
+```{r}
+bs_pln = bootstrap_p(m_ln)
+bs_pln
+m_ln$setXmin(m_pl$getXmin())
+estp = estimate_pars(m_ln)
+m_ln$setPars(estp)
+comp = compare_distributions(m_pl, m_ln)
+comp[2]
+```
+
+```{r}
+bs_pln[1]
+```
+
+```{r}
+eve_bs_pln = bootstrap_p(eve_m_ln)
+eve_bs_pln[1]
+eve_m_ln$setXmin(eve_m_pl$getXmin())
+estp_eve = estimate_pars(eve_m_ln)
+eve_m_ln$setPars(estp_eve)
+comp_eve = compare_distributions(eve_m_pl, eve_m_ln)
+comp_eve[2]
+comp_eve[1]
+```
+
+```{r}
+eve_bs_ppl = bootstrap_p(eve_m_pl)
+eve_bs_ppl[1]
+```
+
+
+
+```{r}
+data <- read.csv(file = 'Eve.csv')
+eve_m_pl <- displ$new(data$count)
+eve_estpl <- estimate_xmin(eve_m_pl)
+eve_m_pl$setXmin(eve_estpl)
+eve_m_ln <- dislnorm$new(data$count)
+eve_estln <-estimate_xmin(eve_m_ln)
+eve_m_ln$setXmin(eve_estln)
+eve_m_pois <-dispois$new(data$count)
+eve_est_pois <-estimate_xmin(eve_m_pois)
+eve_m_pois$setXmin(eve_est_pois)
+eve_m_exp = disexp$new(data$count)
+eve_est_exp <- estimate_xmin(eve_m_exp)
+eve_m_exp$setXmin(eve_est_exp)
+plot(eve_m_ln)
+lines(eve_m_pl, col = 'red')
+lines(eve_m_ln, col = 'green')
+lines(eve_m_pois, col = 'blue')
+lines(eve_m_exp, col = 'purple')
+```
+
+
+
+```{r}
+bs_pln_eve = bootstrap_p(eve_m_ln)
+bs_pln
+m_ln$setXmin(m_pl$getXmin())
+estp = estimate_pars(m_ln)
+m_ln$setPars(estp)
+comp = compare_distributions(m_pl, m_ln)
+comp[2]
+```
+
+
+
+```{r}
+library('poweRlaw')
+data <- read.csv(file = 'Fraser.csv')
+fraser_m_pl <- displ$new(data$count)
+fraser_estpl <- estimate_xmin(fraser_m_pl)
+fraser_m_pl$setXmin(fraser_estpl)
+fraser_m_ln <- dislnorm$new(data$count)
+fraser_estln <-estimate_xmin(fraser_m_ln)
+fraser_m_ln$setXmin(fraser_estln)
+fraser_m_pois <-dispois$new(data$count)
+fraser_est_pois <-estimate_xmin(fraser_m_pois)
+fraser_m_pois$setXmin(fraser_est_pois)
+fraser_m_exp = disexp$new(data$count)
+fraser_est_exp <- estimate_xmin(fraser_m_exp)
+fraser_m_exp$setXmin(fraser_est_exp)
+plot(fraser_m_ln)
+lines(fraser_m_pl, col = 'red')
+lines(fraser_m_ln, col = 'green')
+lines(fraser_m_pois, col = 'blue')
+lines(fraser_m_exp, col = 'purple')
+```
+
+
+```{r}
+fraser_bs_pln = bootstrap_p(fraser_m_ln)
+fraser_bs_pln[1]
+fraser_bs_ppl = bootstrap_p(fraser_m_pl)
+fraser_bs_ppl[1]
+fraser_m_ln$setXmin(fraser_m_pl$getXmin())
+estp_fraser = estimate_pars(fraser_m_ln)
+fraser_m_ln$setPars(estp_fraser)
+comp_fraser = compare_distributions(fraser_m_pl, fraser_m_ln)
+comp_fraser[2]
+comp_fraser[1]
+```
+
+
+
+```{r}
+data <- read.csv(file = 'Naomi.csv')
+naomi_m_pl <- displ$new(data$count)
+naomi_estpl <- estimate_xmin(naomi_m_pl)
+naomi_m_pl$setXmin(naomi_estpl)
+naomi_m_ln <- dislnorm$new(data$count)
+naomi_estln <-estimate_xmin(naomi_m_ln)
+naomi_m_ln$setXmin(naomi_estln)
+naomi_m_pois <-dispois$new(data$count)
+naomi_est_pois <-estimate_xmin(naomi_m_pois)
+naomi_m_pois$setXmin(naomi_est_pois)
+naomi_m_exp = disexp$new(data$count)
+naomi_est_exp <- estimate_xmin(naomi_m_exp)
+naomi_m_exp$setXmin(naomi_est_exp)
+plot(naomi_m_ln)
+lines(naomi_m_pl, col = 'red')
+lines(naomi_m_ln, col = 'green')
+lines(naomi_m_pois, col = 'blue')
+lines(naomi_m_exp, col = 'purple')
+```
+
+
+```{r}
+naomi_bs_pln = bootstrap_p(naomi_m_ln)
+naomi_bs_pln[1]
+naomi_bs_ppl = bootstrap_p(naomi_m_pl)
+naomi_bs_ppl[1]
+naomi_m_ln$setXmin(naomi_m_pl$getXmin())
+estp_naomi = estimate_pars(naomi_m_ln)
+naomi_m_ln$setPars(estp_naomi)
+comp_naomi = compare_distributions(naomi_m_pl, naomi_m_ln)
+comp_naomi[2]
+comp_naomi[1]
+```
+
+
+```{r}
+data <- read.csv(file = 'Peter.csv')
+peter_m_pl <- displ$new(data$count)
+peter_estpl <- estimate_xmin(peter_m_pl)
+peter_m_pl$setXmin(peter_estpl)
+peter_m_ln <- dislnorm$new(data$count)
+peter_estln <-estimate_xmin(peter_m_ln)
+peter_m_ln$setXmin(peter_estln)
+peter_m_pois <-dispois$new(data$count)
+peter_est_pois <-estimate_xmin(peter_m_pois)
+peter_m_pois$setXmin(peter_est_pois)
+peter_m_exp = disexp$new(data$count)
+peter_est_exp <- estimate_xmin(peter_m_exp)
+peter_m_exp$setXmin(peter_est_exp)
+plot(peter_m_ln)
+lines(peter_m_pl, col = 'red')
+lines(peter_m_ln, col = 'green')
+lines(peter_m_pois, col = 'blue')
+lines(peter_m_exp, col = 'purple')
+```
+
+```{r}
+peter_bs_pln = bootstrap_p(peter_m_ln)
+peter_bs_pln[1]
+peter_bs_ppl = bootstrap_p(peter_m_pl)
+peter_bs_ppl[1]
+peter_m_ln$setXmin(peter_m_pl$getXmin())
+estp_peter = estimate_pars(peter_m_ln)
+peter_m_ln$setPars(estp_peter)
+comp_peter = compare_distributions(peter_m_pl, peter_m_ln)
+comp_peter[2]
+comp_peter[1]
+```
+
+
+
+
+```{r}
+data <- read.csv(file = 'Allison.csv')
+allison_m_pl <- displ$new(data$count)
+allison_estpl <- estimate_xmin(allison_m_pl)
+allison_m_pl$setXmin(allison_estpl)
+allison_m_ln <- dislnorm$new(data$count)
+allison_estln <-estimate_xmin(allison_m_ln)
+allison_m_ln$setXmin(allison_estln)
+allison_m_pois <-dispois$new(data$count)
+allison_est_pois <-estimate_xmin(allison_m_pois)
+allison_m_pois$setXmin(allison_est_pois)
+allison_m_exp = disexp$new(data$count)
+allison_est_exp <- estimate_xmin(allison_m_exp)
+allison_m_exp$setXmin(allison_est_exp)
+plot(allison_m_ln)
+lines(allison_m_pl, col = 'red')
+lines(allison_m_ln, col = 'green')
+lines(allison_m_pois, col = 'blue')
+lines(allison_m_exp, col = 'purple')
+```
+
+
+```{r}
+allison_bs_pln = bootstrap_p(allison_m_ln)
+allison_bs_pln[1]
+allison_bs_ppl = bootstrap_p(allison_m_pl)
+allison_bs_ppl[1]
+allison_m_ln$setXmin(allison_m_pl$getXmin())
+estp_allison = estimate_pars(allison_m_ln)
+allison_m_ln$setPars(estp_allison)
+comp_allison = compare_distributions(allison_m_pl, allison_m_ln)
+comp_allison[2]
+comp_allison[1]
+```
+
+
+```{r}
+data <- read.csv(file = 'April.csv')
+april_m_pl <- displ$new(data$count)
+april_estpl <- estimate_xmin(april_m_pl)
+april_m_pl$setXmin(april_estpl)
+april_m_ln <- dislnorm$new(data$count)
+april_estln <-estimate_xmin(april_m_ln)
+april_m_ln$setXmin(april_estln)
+april_m_pois <-dispois$new(data$count)
+april_est_pois <-estimate_xmin(april_m_pois)
+april_m_pois$setXmin(april_est_pois)
+april_m_exp = disexp$new(data$count)
+april_est_exp <- estimate_xmin(april_m_exp)
+april_m_exp$setXmin(april_est_exp)
+plot(april_m_ln)
+lines(april_m_pl, col = 'red')
+lines(april_m_ln, col = 'green')
+lines(april_m_pois, col = 'blue')
+lines(april_m_exp, col = 'purple')
+```
+```{r}
+data <- read.csv(file = 'Sarah.csv')
+sarah_m_pl <- displ$new(data$count)
+sarah_estpl <- estimate_xmin(sarah_m_pl)
+sarah_m_pl$setXmin(sarah_estpl)
+sarah_m_ln <- dislnorm$new(data$count)
+sarah_estln <-estimate_xmin(sarah_m_ln)
+sarah_m_ln$setXmin(sarah_estln)
+sarah_m_pois <-dispois$new(data$count)
+sarah_est_pois <-estimate_xmin(sarah_m_pois)
+sarah_m_pois$setXmin(sarah_est_pois)
+sarah_m_exp = disexp$new(data$count)
+sarah_est_exp <- estimate_xmin(sarah_m_exp)
+sarah_m_exp$setXmin(sarah_est_exp)
+plot(sarah_m_ln)
+lines(sarah_m_pl, col = 'red')
+lines(sarah_m_ln, col = 'green')
+lines(sarah_m_pois, col = 'blue')
+lines(sarah_m_exp, col = 'purple')
+legend("topright", legend = c("power law", "log normal", "poisson", "exponential"), 
+       col = c("red","green","blue","purple"),pch=0.6, pt.cex = 0.6,cex=0.5)
+```
+
+```{r}
+Sarah <- read.csv('Sarah.csv')
+y <- Sarah$count
+x <- Sarah$rank
+fml <- lm(log10(y)~log10(x))
+summary(fml)
+ffml <-lm(log(x)~log(y))
+summary(ffml)
+```
+
+
+
+
+
+```{r}
+fraser <- read.csv('Fraser.csv')
+fy <- fraser$count
+fx <- fraser$rank
+ffml <- lm(log10(fy)~log10(fx))
+summary(ffml)
+```
+
+```{r}
+fffml <- lm(log(fx)~log(fy))
+summary(fffml)
+```
+
+```{r}
+addddam <- read.csv('Adam.csv')
+y <- addddam$count
+x <- addddam$rank
+fml <- lm(log10(y)~log10(x))
+summary(fml)
+```
+
+```{r}
+fmll <- lm(log10(x) ~log10(y))
+summary(fmll)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
